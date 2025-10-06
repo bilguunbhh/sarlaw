@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank U ❤️</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { overflow: hidden; }
+    .slide {
+      display: none;
+      position: absolute;
+      inset: 0;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      animation: fadeIn 1.5s ease;
+    }
+    .slide.active { display: flex; }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+  </style>
+</head>
+<body class="relative min-h-screen bg-gradient-to-br from-pink-100 to-pink-200">
+
+  <audio id="music" autoplay loop>
+    <source src="my-kind-of-woman.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="slide active">
+    <div class="max-w-lg bg-white bg-opacity-70 p-8 rounded-2xl shadow-lg">
+      <h1 class="text-3xl font-bold text-pink-600 mb-4">Thank u ❤️</h1>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Thank u for understanding me when I needed it the most.<br>
+        Ur patience means everything to me.
+      </p>
+    </div>
+    <button id="next1" class="mt-6 px-5 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600">Next ➡️</button>
+  </div>
+
+  <div class="slide">
+    <div class="max-w-lg bg-white bg-opacity-70 p-8 rounded-2xl shadow-lg">
+      <h1 class="text-2xl font-bold text-pink-600 mb-4">A Second Chance 🌸</h1>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        I will never take this second chance for granted.<br>
+        Im grateful to have u beside me again.
+      </p>
+    </div>
+    <div class="mt-6 flex space-x-4">
+      <button id="back2" class="px-5 py-2 bg-gray-300 rounded-full hover:bg-gray-400">⬅️ Back</button>
+      <button id="next2" class="px-5 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600">Next ➡️</button>
+    </div>
+  </div>
+
+  <div class="slide">
+    <div class="max-w-lg bg-white bg-opacity-70 p-8 rounded-2xl shadow-lg">
+      <h1 class="text-2xl font-bold text-pink-600 mb-4">Forever Grateful 🫶</h1>
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Ur love and understanding bring light into my world.<br>
+        Thank u for believing in me for last time. ❤️
+      </p>
+    </div>
+    <div class="mt-6 flex space-x-4">
+      <button id="back3" class="px-5 py-2 bg-gray-300 rounded-full hover:bg-gray-400">⬅️ Back</button>
+      <button id="restart1" class="px-5 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600">Replay 🔄</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showSlide(index) {
+      slides[current].classList.remove('active');
+      current = index;
+      slides[current].classList.add('active');
+    }
+
+    document.getElementById('next1').onclick = () => showSlide(1);
+    document.getElementById('next2').onclick = () => showSlide(2);
+    document.getElementById('back2').onclick = () => showSlide(0);
+    document.getElementById('back3').onclick = () => showSlide(1);
+    document.getElementById('restart1').onclick = () => showSlide(0);
+    const music = document.getElementById('music');
+    document.body.addEventListener('click', () => {
+      if (music.paused) music.play();
+    });
+  </script>
+</body>
+</html>
